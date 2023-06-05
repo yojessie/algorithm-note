@@ -1,4 +1,5 @@
 // 2023-06-04
+// 입출력 문제
 
 let input = require('fs').readFileSync('./input.txt').toString().split('\n')
 
