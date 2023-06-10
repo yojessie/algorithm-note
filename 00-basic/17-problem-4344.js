@@ -3,10 +3,10 @@
 
 const input = require('fs').readFileSync('./input.txt').toString().split('\n')
 const arr = input.map(x => x.split(" "))
-
+const inputNum = arr[0]
 let answer = ''
 
-for (let i = 1; i < arr.length; i++) {
+for (let i = 1; i < arr.length - 1; i++) {
     let thisArr = arr[i].map(Number)
     let num = thisArr[0]
     let sum = thisArr.reduce((acc, cur) => acc + cur) - num
