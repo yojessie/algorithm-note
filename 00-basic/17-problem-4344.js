@@ -4,6 +4,8 @@
 const input = require('fs').readFileSync('./input.txt').toString().split('\n')
 const arr = input.map(x => x.split(" "))
 
+let answer = ''
+
 for (let i = 1; i < arr.length; i++) {
     let thisArr = arr[i].map(Number)
     let num = thisArr[0]
@@ -16,5 +18,6 @@ for (let i = 1; i < arr.length; i++) {
     }
     
     let percent = count / num * 100
-    console.log(`${percent.toFixed(3)}%`)
+    answer += `${percent.toFixed(3)}%\n`
 }
+console.log(answer)
