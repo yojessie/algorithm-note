@@ -47,6 +47,5 @@ function solution(n, stages) {
   }
   arr.sort((a, b) => b[1] - a[1]);
 
-  let answer = arr.map((x) => x[0]);
-  return answer;
+  return arr.map((x) => x[0]);
 }
