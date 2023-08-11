@@ -1,28 +1,33 @@
-// 2023-07-29
+// 2023-08-10
 // 영어 끝말 잇기
 // https://school.programmers.co.kr/learn/courses/30/lessons/12981
 
 function solution(n, words) {
-    let wordSet = new Set
-    wordSet.add(words[0])    
-    let answer = [0,0]
-    
-    for (let i = 1; i < words.length; i++) {
-        let lastChar = words[i-1][words[i-1].length - 1]
-        
-        if (wordSet.has(words[i]) || lastChar !== words[i][0]) {
-            let person = (i % n) + 1
-            let turn = Math.ceil((i + 1) / n)
-            answer = [person, turn]
-            break
-        } else {
-            wordSet.add(words[i])
-        }
+  let wordSet = new Set([words[0]]);
+
+  let failedAt;
+  let lastChar = words[0].at(-1);
+
+  for (let i = 1; i < words.length; i++) {
+    const word = words[i];
+
+    if (wordSet.has(word) || lastChar !== word[0]) {
+      failedAt = i;
+      break;
     }
-    return answer
+    wordSet.add(word);
+    lastChar = word.at(-1);
+  }
+
+  return failedAt === undefined
+    ? [0, 0]
+    : [(failedAt % n) + 1, Math.ceil((failedAt + 1) / n)];
 }
 
+// 멘토님이 주신 개선 코드로 수정한 답안
+// lastChar의 첫번째 값을 초기화 하지 않고 0번째부터 시작하면
+// lastChar !== words[0] 조건에 걸리기때문에 초기화는 필요한 것 같다.
+// 그리고 끝말잇기 종료조건이 나오면 break시켜도 좋을 것 같았다.
+// 마지막 i값은 turn값으로 계산이 필요해서 수정했다.
 
-// 은근 애 먹었던 문제인데
-// 다른사람 답을 보니 reduce로 앞 뒤 단어를 비교하는 방법도 있었다.
-// 로직 이해해서 내 식으로 바꿔보고싶었는데 시간이 너무 걸려서 일단 패쓰
+// 전에 비해 answer 배열과 person, turn 변수의 선언 필요없이 필요한 값만 가져와 반영시키는 방향으로 수정되었다.
