@@ -10,18 +10,20 @@ function solution(food) {
       temp += i.toString().repeat(Math.floor(food[i] / 2));
     }
   }
-  return temp + "0" + temp.split("").reverse().join("");
+  return `${temp}0${temp.split("").reverse().join("")}`;
 }
+solution();
 
 // 처음에 객체를 이용해서 풀려다가 잘 안돼서 위와 같이 풀었는데
 // 다른사람 풀이를 보고 배워서 다시 풀어보았다.
 
-function solution(s) {
-  let hash = {};
+function solution2(s) {
+  const hash = {};
 
   return [...s].map((v, i) => {
-    let result = hash[v] !== undefined ? i - hash[v] : -1;
+    const result = hash[v] !== undefined ? i - hash[v] : -1;
     hash[v] = i;
     return result;
   });
 }
+solution2();

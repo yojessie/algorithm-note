@@ -3,24 +3,25 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/42885
 
 function solution(people, limit) {
-    people.sort((a, b) => b - a)
-    
-    let count = 0
-    let left = 0
-    let right = people.length - 1
-    
-    while (left < right) {        
-        if (people[left] + people[right] > limit) left++
-        else {
-            left++
-            right--
-        }
-        count++
+  people.sort((a, b) => b - a);
+
+  let count = 0;
+  let left = 0;
+  let right = people.length - 1;
+
+  while (left < right) {
+    if (people[left] + people[right] > limit) left++;
+    else {
+      left++;
+      right--;
     }
-    if (left === right) count++
-    
-    return count
+    count++;
+  }
+  if (left === right) count++;
+
+  return count;
 }
+solution();
 
 // 무거운 사람부터 정렬해놓고
 // 배열 맨앞을 left, 맨 뒤를 right 인덱스로 정의

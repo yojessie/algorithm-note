@@ -8,3 +8,4 @@ function solution(k, m, score) {
   for (let i = m - 1; i < score.length; i += m) answer += score[i] * m;
   return answer;
 }
+solution();

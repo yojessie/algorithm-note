@@ -41,31 +41,36 @@
 // https://velog.io/@ttc1018/%EB%B0%B1%EC%A4%80-1493%EB%B0%95%EC%8A%A4%EC%B1%84%EC%9A%B0%EA%B8%B0-Python-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B7%B8%EB%A6%AC%EB%94%94-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98
 // https://steady-coding.tistory.com/14
 
-const [a, b, ...input] = require("fs").readFileSync("/dev/stdin").toString().trim().split("\n");
-let [l, w, h] = a.split(" ").map(Number)
-let cube = input.map(x => x.split(" ").map(Number))
+const [a, b, ...input] = require("fs")
+  .readFileSync("/dev/stdin")
+  .toString()
+  .trim()
+  .split("\n");
 
-for (let i of cube) {
-    if (i[0] == 0) i[0] = 1
-    else i[0] = 2 ** i[0]
+const [l, w, h] = a.split(" ").map(Number);
+const cube = input.map((x) => x.split(" ").map(Number));
+
+for (const i of cube) {
+  if (i[0] == 0) i[0] = 1;
+  else i[0] = 2 ** i[0];
 }
-cube.reverse()
+cube.reverse();
 
-const boxSize = l * w * h
-let nowTotal = 0
-let count = 0
+const boxSize = l * w * h;
+let nowTotal = 0;
+let count = 0;
 
-for (let i of cube) {
-    nowTotal *= 8
-    let nowCube = (parseInt(l / i[0]) * parseInt(w / i[0]) * parseInt(h / i[0]))
-    let available = nowCube - nowTotal
-    available = Math.min(i[1], available)
+for (const i of cube) {
+  nowTotal *= 8;
+  const nowCube = parseInt(l / i[0]) * parseInt(w / i[0]) * parseInt(h / i[0]);
+  let available = nowCube - nowTotal;
+  available = Math.min(i[1], available);
 
-    nowTotal += available
-    count += available
+  nowTotal += available;
+  count += available;
 }
-if (nowTotal == boxSize) console.log(count)
-else console.log(-1)
+if (nowTotal == boxSize) console.log(count);
+else console.log(-1);
 
 // 이거 풀고나서 진심 춤췄다
 // 앞에서 계속 고전한 이유는 두번째 링크의 글에서 찾았다.

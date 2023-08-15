@@ -4,9 +4,9 @@
 // 2023-08-07
 // map을 좀 더 적극적으로 활용해 보는 중
 function solution(k, score) {
-  let stage = [];
-  return score.map((score, idx) => {
-    stage.push(score);
+  const stage = [];
+  return score.map((x) => {
+    stage.push(x);
     if (stage.length > k) {
       stage.sort((a, b) => b - a);
       stage.pop();
@@ -15,3 +15,4 @@ function solution(k, score) {
     return Math.min(...stage);
   });
 }
+solution();

@@ -3,7 +3,7 @@
 
 // 2023-08-09
 function solution(number, limit, power) {
-  let answer = [];
+  const answer = [];
   for (let i = 1; i <= number; i++) {
     let count = 0;
     for (let j = 1; j * j <= i; j++) {
@@ -16,3 +16,4 @@ function solution(number, limit, power) {
     return cur > limit ? (acc += power) : (acc += cur);
   });
 }
+solution();

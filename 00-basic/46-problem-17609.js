@@ -71,27 +71,31 @@
 // 2
 // 1
 
-
-const [n, ...input] = require("fs").readFileSync("/dev/stdin").toString().trim().split('\n');
+const [n, ...input] = require("fs")
+  .readFileSync("/dev/stdin")
+  .toString()
+  .trim()
+  .split("\n");
 
 function check(x) {
-    return x === x.split("").reverse().join("")
+  return x === x.split("").reverse().join("");
 }
 
-for (let word of input) {
-    if (check(word)) console.log(0)
-    else {
-        let found = false
-        let n = word.length
-        for (let i = 0; i < n / 2; i++) {
-            if (word[i] !== word[n - 1 - i]) {
-                if (check(word.slice(0, i) + word.slice(i + 1, n))) found = true
-                if (check(word.slice(0, n - 1 - i) + word.slice(n - i, n))) found = true
-                break
-            }
-        }
-        console.log(found ? 1 : 2)
+for (const word of input) {
+  if (check(word)) console.log(0);
+  else {
+    let found = false;
+    const n = word.length;
+    for (let i = 0; i < n / 2; i++) {
+      if (word[i] !== word[n - 1 - i]) {
+        if (check(word.slice(0, i) + word.slice(i + 1, n))) found = true;
+        if (check(word.slice(0, n - 1 - i) + word.slice(n - i, n)))
+          found = true;
+        break;
+      }
     }
+    console.log(found ? 1 : 2);
+  }
 }
 
 // 내가 해맷던 이유는

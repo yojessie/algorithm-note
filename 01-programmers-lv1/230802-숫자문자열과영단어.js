@@ -1,33 +1,9 @@
 // 2021 카카오 채용연계형 인턴십 - 숫자 문자열과 영단어
 // https://school.programmers.co.kr/learn/courses/30/lessons/81301
 
-// 2022-09-07
-function solution(s) {
-  let txt = [
-    "zero",
-    "one",
-    "two",
-    "three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "eight",
-    "nine",
-  ];
-
-  while (isNaN(s)) {
-    for (let i = 0; i < txt.length; i++) {
-      s = s.replace(txt[i], i);
-    }
-  }
-
-  return Number(s);
-}
-
 // 2023-08-02
 function solution(s) {
-  let words = [
+  const words = [
     "zero",
     "one",
     "two",
@@ -44,3 +20,4 @@ function solution(s) {
   }
   return Number(s);
 }
+solution();

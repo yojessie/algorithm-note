@@ -13,3 +13,4 @@ function solution(n, m, section) {
   }
   return count;
 }
+solution();

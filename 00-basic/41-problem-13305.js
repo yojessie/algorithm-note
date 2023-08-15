@@ -23,20 +23,24 @@
 
 // console.log(answer)
 
-
 // 강의 코드를 이해하고 다시 작성해본 코드
 
-const [n, ...input] = require("fs").readFileSync("/dev/stdin").toString().trim().split('\n');
-const [dis, cost] = input.map(x => x.split(" ").map(Number))
+const [n, ...input] = require("fs")
+  .readFileSync("/dev/stdin")
+  .toString()
+  .trim()
+  .split("\n");
 
-let answer = BigInt(0)
-let min = cost[0]
+const [dis, cost] = input.map((x) => x.split(" ").map(Number));
+
+let answer = BigInt(0);
+let min = cost[0];
 for (let i = 0; i < dis.length; i++) {
-    min = Math.min(min, cost[i])
-    answer += BigInt(min) * BigInt(dis[i])
+  min = Math.min(min, cost[i]);
+  answer += BigInt(min) * BigInt(dis[i]);
 }
 
-console.log(String(answer))
+console.log(String(answer));
 
 // JS에서 큰 정수를 처리할때는 BigInt를 사용한다
 // (길이의 제약 없이 정수를 다룰 수 있게 한다)

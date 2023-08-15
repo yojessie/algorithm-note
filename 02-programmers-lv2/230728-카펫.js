@@ -14,6 +14,7 @@ function solution(brown, yellow) {
     if (outline === brown) return [sum / n, n];
   }
 }
+solution();
 
 // 와.. 문제 하나로 아주 많은 것을 배웠다.
 // 다시 수정해본 코드를 통해 아래의 내용들을 배울 수 있었다.

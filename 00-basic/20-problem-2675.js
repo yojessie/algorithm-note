@@ -1,17 +1,17 @@
 // 2023-06-07
 // 문자열 문제
 
-const input = require('fs').readFileSync('./input.txt').toString().split('\n')
+const input = require("fs").readFileSync("./input.txt").toString().split("\n");
 
-const num = Number(input[0])
+const num = Number(input[0]);
 
 for (let i = 1; i <= num; i++) {
-    const [times, string] = input[i].split(' ')
-    let answer = ''
-    for (let j of string) {
-        answer += j.repeat(times)
-    }
-    console.log(answer)
+  const [times, string] = input[i].split(" ");
+  let answer = "";
+  for (const j of string) {
+    answer += j.repeat(times);
+  }
+  console.log(answer);
 }
 
 // for (let i = 1; i <= num; i++) {

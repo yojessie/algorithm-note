@@ -3,19 +3,8 @@
 
 // 2023-08-12
 function solution(park, routes) {
-  routes = routes.map((i) => i.split(" ")).map((i) => [i[0], Number(i[1])]);
-
   let dog;
-  for (let i = 0; i < park.length; i++) {
-    for (let j = 0; j < park[i].length; j++) {
-      if (park[i][j] === "S") dog = [i, j];
-    }
-  }
-  let range = [park.length, park[0].length];
-  for (let [op, n] of routes) {
-    moving(op, n);
-  }
-  return dog;
+  const range = [park.length, park[0].length];
 
   function moving(op, n) {
     let check = true;
@@ -45,7 +34,22 @@ function solution(park, routes) {
       if (check) dog[1] += n;
     }
   }
+
+  routes = routes.map((i) => i.split(" ")).map((i) => [i[0], Number(i[1])]);
+
+  for (let i = 0; i < park.length; i++) {
+    for (let j = 0; j < park[i].length; j++) {
+      if (park[i][j] === "S") dog = [i, j];
+    }
+  }
+
+  for (const [op, n] of routes) {
+    moving(op, n);
+  }
+  return dog;
 }
 
 // 조건이 복잡해서 정말 오래걸렸다
 // 그만큼 코드도 복잡한것 같은데.. 시간이 좀 지나서 리팩토링 해봐야겠다.
+
+solution();

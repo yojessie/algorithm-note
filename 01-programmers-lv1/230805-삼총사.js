@@ -8,19 +8,20 @@ function solution(number) {
   let count = 0;
 
   function gcb(arr, num) {
-    let result = [];
+    const result = [];
     if (num === 1) return arr.map((x) => [x]);
 
-    arr.forEach((cur, idx, arr) => {
-      let rest = arr.slice(idx + 1);
-      let combination = gcb(rest, num - 1);
-      let attached = combination.map((x) => [cur, ...x]);
+    arr.forEach((cur, idx, origin) => {
+      const rest = origin.slice(idx + 1);
+      const combination = gcb(rest, num - 1);
+      const attached = combination.map((x) => [cur, ...x]);
       result.push(...attached);
     });
     return result;
   }
 
-  let answer = gcb(number, 3).map((x) => x.reduce((acc, cur) => acc + cur));
-  for (let i of answer) if (i === 0) count++;
+  const answer = gcb(number, 3).map((x) => x.reduce((acc, cur) => acc + cur));
+  for (const i of answer) if (i === 0) count++;
   return count;
 }
+solution();

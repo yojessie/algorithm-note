@@ -6,13 +6,13 @@
 // 너무나 헷갈려서 오래 걸린 문제
 function solution(s, skip, index) {
   skip = [...skip].map((v) => v.charCodeAt()).sort((a, b) => a - b);
-  let answer = [...s].map((char) => {
+  const answer = [...s].map((char) => {
     let num = char.charCodeAt();
     for (let i = 0; i < index; i++) {
       num++;
       while (skip.includes(num)) num++;
       if (num > 122) {
-        let over = num - 122;
+        const over = num - 122;
         num = 96;
         for (let j = 0; j < over; j++) {
           num++;
@@ -24,6 +24,7 @@ function solution(s, skip, index) {
   });
   return answer.join("");
 }
+solution();
 
 // 스킵해야할 문자들은 미리 아스키코드로 바꿔 정렬해놓는다
 // 문자에서 글자 하나씩 처리를 시작한다

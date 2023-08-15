@@ -3,24 +3,25 @@
 
 // 2023-08-11
 function solution(players, callings) {
-  for (let name of callings) {
-    let idx = players.indexOf(name);
-    let temp = players[idx];
+  for (const name of callings) {
+    const idx = players.indexOf(name);
+    const temp = players[idx];
     players[idx] = players[idx - 1];
     players[idx - 1] = temp;
   }
   return players;
 }
+solution();
 // 이렇게 쉽게 풀려고 했다가 시간초과로 실패
 // indexOf를 빼고 다시 해봐야할 것 같았다.
 
-function solution(players, callings) {
-  let myMap = new Map();
+function solution2(players, callings) {
+  const myMap = new Map();
   players.map((v, i) => myMap.set(v, i));
 
-  for (let name of callings) {
-    let idx = myMap.get(name);
-    let frontP = players[idx - 1];
+  for (const name of callings) {
+    const idx = myMap.get(name);
+    const frontP = players[idx - 1];
     players[idx - 1] = name;
     players[idx] = frontP;
     myMap.set(name, idx - 1);
@@ -29,6 +30,7 @@ function solution(players, callings) {
 
   return players;
 }
+solution2();
 
 // 이름을 키값으로 하는 Map을 생성한다
 // 불려진 이름에 반복문을 돌리는데

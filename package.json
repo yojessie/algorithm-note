@@ -1,0 +1,33 @@
+{
+  "name": "algorithm-note",
+  "version": "1.0.0",
+  "description": "#### 알고리즘 문제를 풀면서 배운것과 생각의 과정을 기록하는 저장소입니다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.47.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "3.0.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb",
+      "plugin:prettier/recommended"
+    ],
+    "rules": {
+      "object-curly-newline": 0
+    },
+    "env": {
+      "browser": true
+    }
+  }
+}

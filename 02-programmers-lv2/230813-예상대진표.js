@@ -9,6 +9,7 @@ function solution(n, a, b) {
     if (a === b) return round;
   }
 }
+solution();
 
 // 부전승이 발생하지 않는 대결이므로
 // a와 b의 다음라운드 순번은 2로 나눠 올림한 수가 된다

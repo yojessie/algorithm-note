@@ -3,15 +3,16 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/12973
 
 function solution(s) {
-    let stack = []
-    
-    for (let i of s) {
-        if (stack.at(-1) == i) stack.pop()
-        else stack.push(i)
-    }
-    
-    return stack.length == 0 ? 1 : 0
+  const stack = [];
+
+  for (const i of s) {
+    if (stack.at(-1) === i) stack.pop();
+    else stack.push(i);
+  }
+
+  return stack.length === 0 ? 1 : 0;
 }
+solution();
 
 // 위 코드로 효율성에서 하나 틀려서 고민했는데
 // 비교연산자를 ===로 바꿨더니 통과... 이유가 뭘까?
@@ -20,16 +21,17 @@ function solution(s) {
 // 비교연산자를 ==가 아닌 ===로 사용했을때 결과 차이나는 경우가 종종 있었다.
 
 // 아래가 통과한 풀이
-function solution(s) {
-    let stack = []
+function solution2(s) {
+  const stack = [];
 
-    for (let i of s) {
-if (stack.at(-1) === i) stack.pop()
-        else stack.push(i)
-    }
+  for (const i of s) {
+    if (stack.at(-1) === i) stack.pop();
+    else stack.push(i);
+  }
 
-    return stack.length == 0 ? 1 : 0
+  return stack.length === 0 ? 1 : 0;
 }
+solution2();
 
 // 비교연산자를 사용할때는 === 를 사용하는 것이 좋다.
 // == 비교에는 여러가지 예외사항들이 있다.

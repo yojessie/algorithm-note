@@ -30,20 +30,20 @@
 
 // console.log(answer)
 
-
 // 강의 힌트 듣고 겨우 풀었다 ㅠㅠ
 const input = require("fs").readFileSync("/dev/stdin").toString().trim();
-let k = Number(input)
-let answer = 0
 
-while(k > 0) {
-    if (k % 5 === 0) {
-        k = k - 5
-        answer++
-    } else {
-        k = k - 3
-        answer++
-    }
+let k = Number(input);
+let answer = 0;
+
+while (k > 0) {
+  if (k % 5 === 0) {
+    k -= 5;
+    answer++;
+  } else {
+    k -= 3;
+    answer++;
+  }
 }
 
-console.log(k !== 0 ? -1 : answer)
+console.log(k !== 0 ? -1 : answer);

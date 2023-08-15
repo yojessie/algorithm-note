@@ -11,10 +11,11 @@ function solution(a, b, n) {
     if (now % a !== 0) left = now % a;
     else left = 0;
 
-    let temp = ((now - left) / a) * b;
+    const temp = ((now - left) / a) * b;
     result += temp;
     now = temp + left;
   }
 
   return result;
 }
+solution();

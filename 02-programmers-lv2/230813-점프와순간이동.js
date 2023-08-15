@@ -15,6 +15,7 @@ function solution(n) {
   }
   return result;
 }
+solution();
 
 // 최소로 이동하는 경우의수를 찾기위해
 // 최대한 2배 인덱스 자리로 순간이동하는 경우를 활용해야한다

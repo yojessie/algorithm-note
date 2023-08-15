@@ -3,24 +3,26 @@
 
 // 2023-08-07
 function solution(name, yearning, photo) {
-  let obj = {};
+  const obj = {};
   name.map((v, i) => (obj[v] = yearning[i]));
 
   return photo.map((v) => {
     let sum = 0;
-    v.forEach((name) => {
-      if (obj[name] !== undefined) sum += obj[name];
+    v.forEach((x) => {
+      if (obj[x] !== undefined) sum += obj[x];
     });
     return sum;
   });
 }
+solution();
 
 // 다른 풀이를 따라해보다가 새로운 걸 배웠다.
-function solution(name, yearning, photo) {
+function solution2(name, yearning, photo) {
   return photo.map((v) =>
     v.reduce((acc, cur) => (acc += yearning[name.indexOf(cur)] ?? 0), 0)
   );
 }
+solution2();
 
 // 마지막 삼항연산자 표현에서 ??는 null 병합 연산자라고 한다.
 // A ?? B

@@ -5,7 +5,7 @@
 function solution(ingredient) {
   let result = 0;
   let stack = "";
-  for (let i of ingredient) {
+  for (const i of ingredient) {
     stack += i;
     if (stack.match(/1231/)) {
       stack = stack.replace(/1231/, "");
@@ -14,6 +14,7 @@ function solution(ingredient) {
   }
   return result;
 }
+solution();
 
 // 처음엔 전체에서 replace를 반복 실행했는데
 // 시간초과에 걸려서 다른 방식이 필요했다.
@@ -26,15 +27,16 @@ function solution(ingredient) {
 // 통과.......뭐지??
 // 문자열보다 배열의 처리가 더 빠르다..
 
-function solution(ingredient) {
+function solution2(ingredient) {
   let result = 0;
-  let stack = [];
-  for (let i of ingredient) {
+  const stack = [];
+  for (const i of ingredient) {
     stack.push(i);
     if (stack.slice(-4).join("") === "1231") {
-      for (let i = 0; i < 4; i++) stack.pop();
+      for (let j = 0; j < 4; j++) stack.pop();
       result++;
     }
   }
   return result;
 }
+solution2();

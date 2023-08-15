@@ -27,7 +27,6 @@
 
 // console.log(arrow)
 
-
 // 열심히 코드 수정했으나 역시나 시간 초과
 // 이런저런 반례 다 넣어봐도 통과는 하는데..
 // while문 안에서 for문이 도니까 시간복잡도가 n²이 되어서 그런 것 같다.
@@ -55,19 +54,23 @@
 // 강의의 아이디어는 각 풍선 높이 인덱스의 arrow배열을 두고
 // 풍선arr의 값을 arrow배열의 인덱스로 활용한다
 // 겨우 이해했는데 시간이 지나서 다시 풀어봐야할 것 같다.
-const [n, ...input] = require("fs").readFileSync("/dev/stdin").toString().trim().split(/\s/);
+const [n, ...input] = require("fs")
+  .readFileSync("/dev/stdin")
+  .toString()
+  .trim()
+  .split(/\s/);
 
-let arr = input.map(Number)
-let result = 0
-let arrow = Array.from(arr).fill(0)
+const arr = input.map(Number);
+let result = 0;
+const arrow = Array.from(arr).fill(0);
 
-for (let i of arr) {
-    if (arrow[i] > 0) {
-        arrow[i]--
-        arrow[i - 1]++
-    } else {
-        arrow[i - 1]++
-        result++
-    }
+for (const i of arr) {
+  if (arrow[i] > 0) {
+    arrow[i]--;
+    arrow[i - 1]++;
+  } else {
+    arrow[i - 1]++;
+    result++;
+  }
 }
-console.log(result)
+console.log(result);

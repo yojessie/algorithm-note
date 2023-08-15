@@ -3,7 +3,7 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/12981
 
 function solution(n, words) {
-  let wordSet = new Set([words[0]]);
+  const wordSet = new Set([words[0]]);
 
   let failedAt;
   let lastChar = words[0].at(-1);
@@ -23,6 +23,7 @@ function solution(n, words) {
     ? [0, 0]
     : [(failedAt % n) + 1, Math.ceil((failedAt + 1) / n)];
 }
+solution();
 
 // 멘토님이 주신 개선 코드로 수정한 답안
 // lastChar의 첫번째 값을 초기화 하지 않고 0번째부터 시작하면
