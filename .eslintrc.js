@@ -23,6 +23,7 @@ module.exports = {
     "no-plusplus": "off",
     "no-continue": "off",
     "no-console": "off",
+    "no-loop-func": "off",
     "no-return-assign": "off",
     "no-unused-expressions": "off",
     "no-param-reassign": "off",
