@@ -17,8 +17,7 @@ const getIndx = (n) => {
 };
 
 const testSequence = getSequence(10, -100, 100);
-console.log(testSequence);
-const testIdx = getIndx(10);
+const testIdx = getIndx(testSequence.length);
 
 // 생성한 인덱스의 합계
 const getK = () => {
@@ -26,8 +25,7 @@ const getK = () => {
   for (let i = testIdx[0]; i <= testIdx[1]; i++) answer += testSequence[i];
   return answer;
 };
-
-const testk = getK();
+const testK = getK();
 
 // 부분 수열의 합계 구하기
 function solution(sequence, k) {
@@ -39,7 +37,7 @@ function solution(sequence, k) {
     let end = start;
     sum = sequence[start];
 
-    while (sum <= k && end < sequence.length) {
+    while (end < sequence.length) {
       if (sum === k) {
         const nowLength = end - start;
         if (nowLength < length) {
@@ -54,5 +52,7 @@ function solution(sequence, k) {
   return result;
 }
 
-console.log(solution(testSequence, testk));
-console.log(`The answer is : [${testIdx}]`);
+console.log(`sequence : [${testSequence}]`);
+console.log(`k : ${testK}`);
+console.log(solution(testSequence, testK));
+console.log(`Answer : [${testIdx}]`);
