@@ -16,7 +16,7 @@ const getIndx = (n) => {
   return [getRandomInt(1, n - 1), getRandomInt(1, n - 1)].sort((a, b) => a - b);
 };
 
-const testSequence = getSequence(10, -100, 100);
+const testSequence = getSequence(6, -500, 500);
 const testIdx = getIndx(testSequence.length);
 
 // 생성한 인덱스의 합계
@@ -31,28 +31,34 @@ const testK = getK();
 function solution(sequence, k) {
   let result = [];
   let length = 1000000;
-  let sum = 0;
 
-  for (let start = 0; start < sequence.length; start++) {
-    let end = start;
-    sum = sequence[start];
+  const prefix = [0];
+  sequence.map((n, i) => prefix.push(prefix[i] + n));
+  console.log("prefix :", prefix);
 
-    while (end < sequence.length) {
-      if (sum === k) {
-        const nowLength = end - start;
-        if (nowLength < length) {
-          result = [start, end];
-          length = nowLength;
-        }
+  let start = 0;
+  let end = prefix.length - 1;
+
+  while (start <= end) {
+    const sum = prefix[end] - prefix[start];
+    if (sum === k) {
+      const nowLength = end - 1 - start;
+      if (nowLength < length) {
+        result = [start, end - 1];
+        length = nowLength;
       }
-      end += 1;
-      sum += sequence[end];
     }
+    console.log("start :", start, "end :", end, "sum :", sum);
+
+    if (sum < k) {
+      if (sequence[end] < 0) end -= 1;
+      else start += 1;
+    } else end -= 1;
   }
   return result;
 }
 
-console.log(`sequence : [${testSequence}]`);
-console.log(`k : ${testK}`);
-console.log(solution(testSequence, testK));
-console.log(`Answer : [${testIdx}]`);
+console.log("sequence :", testSequence);
+console.log("k :", testK);
+console.log("Answer :", testIdx);
+console.log("solution :", solution(testSequence, testK));
