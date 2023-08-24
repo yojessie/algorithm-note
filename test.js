@@ -14,7 +14,7 @@ const getIndx = (n) => {
   return [getRandomInt(1, n - 1), getRandomInt(1, n - 1)].sort((a, b) => a - b);
 };
 
-const testSequence = getSequence(6, 1, 1000);
+const testSequence = getSequence(100, 1, 10000);
 const testIdx = getIndx(testSequence.length);
 
 const getK = () => {
@@ -27,19 +27,23 @@ const testK = getK();
 function solution(sequence, k) {
   let result = [];
   let length = 1000000;
+  let sum = 0;
+  let end = 0;
 
   for (let start = 0; start < sequence.length; start++) {
-    let sum = 0;
-    sum += sequence[start];
-    if (sum === k) return [start, start];
-    for (let end = start + 1; end < sequence.length; end++) {
+    for (; end < sequence.length; end++) {
       sum += sequence[end];
+
       if (sum === k) {
         const nowLength = end - start;
         if (nowLength < length) {
           result = [start, end];
           length = nowLength;
         }
+      } else if (sum > k) {
+        sum -= sequence[start];
+        sum -= sequence[end];
+        break;
       }
     }
   }
