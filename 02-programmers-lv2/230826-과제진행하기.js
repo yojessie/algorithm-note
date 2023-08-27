@@ -46,32 +46,23 @@ function solution(plans) {
     const next = planMap.get(plans[i + 1][0]);
 
     const hourDiff = next.time.hour - now.time.hour;
-    if (hourDiff === 1) {
-      now.play -= 60 - now.time.minute + next.time.minute;
-    }
-    if (hourDiff === 0) {
-      now.play -= next.time.minute - now.time.minute;
-    }
-    if (hourDiff >= 2) {
+    if (hourDiff === 1) now.play -= 60 - now.time.minute + next.time.minute;
+    if (hourDiff === 0) now.play -= next.time.minute - now.time.minute;
+    if (hourDiff >= 2)
       now.play -= 60 * hourDiff - now.time.minute + next.time.minute;
-    }
 
     const callBefore = (leftMinutes) => {
       if (nameStack.length === 0) return;
 
       const before = planMap.get(nameStack.at(-1));
-      before.play -= leftMinutes;
+      before.play += leftMinutes;
       if (before.play <= 0) answer.push(nameStack.pop());
-      if (before.play < 0) {
-        callBefore(Math.abs(before.play));
-      }
+      if (before.play < 0) callBefore(before.play);
     };
 
     if (now.play <= 0) answer.push(plans[i][0]);
+    if (now.play < 0) callBefore(now.play);
     if (now.play > 0) nameStack.push(plans[i][0]);
-    if (now.play < 0) {
-      callBefore(Math.abs(now.play));
-    }
   }
 
   console.log(answer);
