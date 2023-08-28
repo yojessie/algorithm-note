@@ -36,8 +36,9 @@ function solution(plans) {
     if (i === plans.length - 1) {
       answer.push(plans[i][0]);
       if (nameStack.length > 0) {
-        for (let j = nameStack.length - 1; j >= 0; j--)
+        for (let j = nameStack.length - 1; j >= 0; j--) {
           answer.push(nameStack[j]);
+        }
       }
       break;
     }
