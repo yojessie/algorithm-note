@@ -4,7 +4,7 @@
 // 2023-08-29
 function solution(k, tangerine) {
   const count = new Array(Math.max(...tangerine) + 1).fill(0);
-  tangerine.forEach((v) => (count[v] += 1));
+  tangerine.map((v) => (count[v] += 1));
   count.sort((a, b) => b - a);
 
   let sum = 0;
