@@ -4,9 +4,9 @@
 // 2023-08-31
 // 아래 코드는 시간초과로 실패
 function solution(n, left, right) {
-  const arr = new Array(n).fill().map(() => Array(n).fill(n));
-  for (let i = n - 2; i >= 0; i--) {
-    for (let j = n - 2; j >= 0; j--) {
+  const arr = new Array(n).fill().map(() => Array(n).fill(0));
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
       arr[i][j] = Math.max(i, j) + 1;
     }
   }
