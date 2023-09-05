@@ -6,9 +6,10 @@ function solution(s) {
   s = s.split("");
   let answer = 0;
   for (let i = 0; i < s.length; i++) {
-    const now = [...s.slice(i, s.length), ...s.slice(0, i)];
+    const rotate = [...s.slice(i, s.length), ...s.slice(0, i)];
+    if (rotate[0] === ")" || rotate[0] === "]" || rotate[0] === "}") continue;
     const stack = [];
-    for (const j of now) {
+    for (const j of rotate) {
       if (j === ")" && stack.at(-1) === "(") stack.pop();
       else if (j === "]" && stack.at(-1) === "[") stack.pop();
       else if (j === "}" && stack.at(-1) === "{") stack.pop();
