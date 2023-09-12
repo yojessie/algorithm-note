@@ -3,13 +3,11 @@
 
 // 2023-09-07
 function solution(arr1, arr2) {
-  return arr1.map((row) => {
-    return arr2[0].map((_, i) => {
-      return row.reduce((sum, cur, j) => {
-        return sum + cur * arr2[j][i];
-      }, 0);
-    });
-  });
+  return arr1.map((row) =>
+    arr2[0].map((_, i) =>
+      row.reduce((sum, cur, j) => sum + cur * arr2[j][i], 0)
+    )
+  );
 }
 solution(
   [
