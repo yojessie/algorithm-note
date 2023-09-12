@@ -5,8 +5,7 @@
 function solution(want, number, discount) {
   let result = 0;
 
-  for (let i = 0; i <= discount.length - 10; i++) {
-    const tenDays = discount.slice(i, i + 10);
+  function itemChecker(tenDays) {
     let flag = true;
     for (let idx = 0; idx < want.length; idx++) {
       const itemCount = tenDays.filter((item) => item === want[idx]).length;
@@ -16,7 +15,12 @@ function solution(want, number, discount) {
         break;
       }
     }
-    if (flag) result += 1;
+    return flag;
+  }
+
+  for (let i = 0; i <= discount.length - 10; i++) {
+    const tenDays = discount.slice(i, i + 10);
+    if (itemChecker(tenDays)) result += 1;
   }
   return result;
 }
