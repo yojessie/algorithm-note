@@ -2,7 +2,7 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/64065
 
 // 2023-09-13
-function solution(s: string) {
+function findTuple(s: string) {
   const tupleSet: number[][] = JSON.parse(
     s.replaceAll("{", "[").replaceAll("}", "]")
   );
@@ -13,4 +13,4 @@ function solution(s: string) {
   }
   return [...new Set(answer)];
 }
-console.log(solution("{{4,2,3},{3},{2,3,4,1},{2,3}}"));
+console.log(findTuple("{{4,2,3},{3},{2,3,4,1},{2,3}}"));

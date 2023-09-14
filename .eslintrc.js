@@ -20,6 +20,8 @@ module.exports = {
     sourceType: "module",
   },
   rules: {
+    strict: "off",
+    "lines-around-directive": "off",
     "no-plusplus": "off",
     "no-continue": "off",
     "no-console": "off",
