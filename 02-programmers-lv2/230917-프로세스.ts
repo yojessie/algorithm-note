@@ -2,7 +2,7 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/42587
 
 // 2023-09-17
-function solution(priorities: number[], location: number) {
+export function solution(priorities: number[], location: number) {
   let count = 0;
   while (priorities.length > 0) {
     const process = priorities.shift();
