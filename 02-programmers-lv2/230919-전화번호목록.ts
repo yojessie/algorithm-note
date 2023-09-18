@@ -1,5 +1,5 @@
-// 깊이/너비 우선 탐색(DFS/BFS) - 타겟 넘버
-// https://school.programmers.co.kr/learn/courses/30/lessons/43165
+// 해시 - 전화번호 목록
+// https://school.programmers.co.kr/learn/courses/30/lessons/42577
 
 // 2023-09-19
 export function solution(phone_book: string[]) {
