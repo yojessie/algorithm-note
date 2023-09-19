@@ -1,9 +1,9 @@
 // 2018 KAKAO BLIND RECRUITMENT - [1차] 뉴스 클러스터링
 // https://school.programmers.co.kr/learn/courses/30/lessons/17677
 
-// 2023-09-18
+// 2023-09-19 - 리팩토링
 export function solution(str1: string, str2: string) {
-  const getMultiSet = (str: string) => {
+  const getGrams = (str: string) => {
     const strArr = [];
     for (let i = 1; i < str.length; i++) {
       const twoChar = str[i - 1] + str[i];
@@ -15,20 +15,19 @@ export function solution(str1: string, str2: string) {
     return strArr;
   };
 
-  const multiSetA = getMultiSet(str1);
-  const multiSetB = getMultiSet(str2);
-  let unionSet = [...multiSetA, ...multiSetB];
-  unionSet = [...new Set(unionSet)];
+  const multiSetA = getGrams(str1);
+  const multiSetB = getGrams(str2);
+  const unionSet = new Set([...multiSetA, ...multiSetB]);
 
   let union = 0;
   let inter = 0;
 
-  for (let str of unionSet) {
-    const filteredA = multiSetA.filter((s) => s === str).length;
-    const filteredB = multiSetB.filter((s) => s === str).length;
+  for (const str of unionSet) {
+    const occurenceInA = multiSetA.filter((s) => s === str).length;
+    const occurenceInB = multiSetB.filter((s) => s === str).length;
 
-    union += Math.max(filteredA, filteredB);
-    inter += Math.min(filteredA, filteredB);
+    union += Math.max(occurenceInA, occurenceInB);
+    inter += Math.min(occurenceInA, occurenceInB);
   }
 
   return Math.floor((inter / union) * 65536);
